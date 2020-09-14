@@ -1,87 +1,132 @@
 package apresentacao;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
-import dados.Contato;
-import negocio.ListaTelefonica;
-
+import dados.Endereco;
+import dados.Pessoa;
+import exceptions.DeleteException;
+import exceptions.InsertException;
+import exceptions.SelectException;
+import exceptions.UpdateException;
+import negocio.Sistema;
 
 public class Main {
-	
-	static Scanner in = new Scanner(System.in);
-	static ArrayList<Character> letras = new ArrayList<Character>(Arrays.asList('A','B','C','D','E',
-			'F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'));
+	public static void main(String[] args) {
+		Sistema sistema = new Sistema();
+		Scanner in = new Scanner(System.in);
+		int aux;
+		
+		int op = 1;
+		
+		while (op!= 0) {
+		System.out.println("1- cadastrar pessoa\n2- remover pessoa\n3- atualizar pessoa\n4- mostrar todos\n0- sair ");
+		op = in.nextInt();
+		in.nextLine();
+		
+		switch (op) {
+			case 1: 
+				Pessoa pessoa = new Pessoa();
+				Endereco endereco = new Endereco();
+				System.out.println("nome");
+				pessoa.setNome(in.nextLine());
+				System.out.println("cpf");
+				pessoa.setCpf(in.nextLine());
+				System.out.println("telefone");
+				pessoa.setTelefone(in.nextInt());
+				in.nextLine();
 				
-	
-public static void main(String[] args) {
-	ListaTelefonica lista = new ListaTelefonica();
-	lista.criarLista();
-	int op = -1;
-	while (op != 0) {
-	 System.out.println("escolha uma opcao");
-	 System.out.println("0- sair");
-	 System.out.println("1- criar contato ");
-	 System.out.println("2- remover contato ");
-	 System.out.println("3- exibir contatos");
-
-	 
-	 op = in.nextInt();
-	 in.nextLine();
-	 
-	 switch (op) {
-	 case 0:
-		 break;
-		 
-	 case 1:
-		novoContato(lista);
-		 break;
-	 case 2:
-		removerContato(lista);
-		 break;
-	 case 3:
-		exibirContato(lista);
-		 break;
-	 	}
-	}
-}
-public static void novoContato(ListaTelefonica lista){
-	Contato contato = new Contato();
-	System.out.println("Nome: ");
-	contato.setNome(in.nextLine());
-	contato.setNome(contato.getNome().substring(0,1).toUpperCase() + contato.getNome().substring(1).toLowerCase());
-	System.out.println("Numero: ");
-	contato.setTelefone(in.nextInt());
-	in.nextLine();
-	lista.adicionarContato(contato, letras);
-}
-
-public static void removerContato(ListaTelefonica lista) {
-	
-	System.out.println("digite a inicial do contato que deseja remover");
-	char letra = in.next().charAt(0);
-	for (Character atual: letras) {
-		if (Character.valueOf(letra).compareTo(Character.valueOf(atual)) == 0) {
-			int j = letras.indexOf(atual);
-			if(lista.getAgenda().get(j+1).isEmpty()) {
-				System.out.println("lista vazia");
+				System.out.println("rua");
+				endereco.setRua(in.nextLine());
+				System.out.println("numero");
+				endereco.setNumero(in.nextInt());
+				in.nextLine();
+				System.out.println("cidade");
+				endereco.setCidade(in.nextLine());
+				
+				pessoa.setEndereco(endereco);
+				try {
+					sistema.inserirPessoa(pessoa);
+				} catch (InsertException e) {
+					e.printStackTrace();
+				} catch (SelectException e) {
+					e.printStackTrace();
+				}
+				break;
+				
+			case 2:
+				try {
+					for (Pessoa p : sistema.selectAll()) {
+						System.out.println(p.toString());
+					}
+				} catch (SelectException e){
+					e.printStackTrace();
+				}
+				System.out.println("digite o id de quem deseja remover");
+				aux = in.nextInt();
+				in.nextLine();
+				
+				try {
+					for (Pessoa p : sistema.selectAll()) {
+						if (p.getId() == aux )
+							sistema.deletarPessoa(p);
+					}
+				} catch (SelectException | DeleteException e) {
+					e.printStackTrace();
+				}
+				break;
+				
+			case 3:
+				try {
+					for (Pessoa p : sistema.selectAll()) {
+						System.out.println(p.toString());
+					}
+				} catch (SelectException e){
+					e.printStackTrace();
+				}
+				System.out.println("digite o id de quem deseja alterar");
+				aux = in.nextInt();
+				in.nextLine();
+				
+				try {
+					for (Pessoa p : sistema.selectAll()) {
+						if (p.getId() == aux ) {
+							System.out.println("nome");
+							p.setNome(in.nextLine());
+							System.out.println("telefone");
+							p.setTelefone(in.nextInt());
+							in.nextLine();
+							System.out.println("rua");
+							p.getEndereco().setRua(in.nextLine());
+							System.out.println("numero");
+							p.getEndereco().setNumero(in.nextInt());
+							in.nextLine();
+							System.out.println("cidade");
+							p.getEndereco().setCidade(in.nextLine());
+							try {
+								sistema.atualizarPessoa(p);
+							} catch (UpdateException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				} catch (SelectException e) {
+					e.printStackTrace();
+				}
+				break;
+				
+			case 4:
+				try {
+					for (Pessoa p : sistema.selectAll()) {
+						System.out.println(p.toString());
+					}
+				} catch (SelectException e) {
+					e.printStackTrace();
+				}
+				break;
+				
 			}
-			else {
-				lista.buscarContato(j);
-				System.out.println("Digite o index do contato que deseja remover");
-				int i = in.nextInt();
-				lista.removerContato(j,i);
-			}
+		}
+		in.close();
 	}
-}
-
-	
-}
-public static void exibirContato(ListaTelefonica lista) {
-	lista.buscarContatos(letras);
-}
-
 }
 
