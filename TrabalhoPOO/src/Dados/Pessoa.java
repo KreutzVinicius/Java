@@ -11,7 +11,7 @@ public class Pessoa {
 	
 	@Override
 	public String toString() {
-		return "Nome: " + nome + ", cpf: " + cpf;
+		return "Nome: " + nome;
 	}
 	
 	public int getId() {

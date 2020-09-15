@@ -11,7 +11,7 @@ public class Medico extends Pessoa {
 	
 	@Override
 	public String toString() {
-		return"id: " + id +" "+ super.toString() + " especialidade: " + especialidade;
+		return"id: " + id +" "+ super.toString() + ", especialidade: " + especialidade;
 	}
 
 	public String getEspecialidade() {

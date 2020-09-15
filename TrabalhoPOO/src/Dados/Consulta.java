@@ -19,7 +19,7 @@ public class Consulta {
 	public String toString() {
 
 		
-		return "Consulta " + id + "\n valor: " + valor +" "+ horario.getTime() + ", diagnostico: " + diagnostico + "\n medico " + medico.toString() + "\n paciente " + paciente.toString();
+		return id + "-" +  horario.getTime() + "\n valor: " + valor +" "+ "\n medico " + medico.toString() + "\n paciente " + paciente.getNome();
 	}
 
 

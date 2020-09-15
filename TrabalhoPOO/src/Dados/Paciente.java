@@ -11,7 +11,7 @@ public class Paciente extends Pessoa{
 	
 	@Override
 	public String toString() {
-		return "id: " + id +" "+ super.toString() + " descricao: " + descricao;
+		return "id: " + id +" "+ super.toString() + ", descricao: " + descricao;
 	}
 
 	public String getDescricao() {
