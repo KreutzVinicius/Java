@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import javax.swing.JPanel;
 
@@ -44,6 +43,11 @@ public class Main {
 	
 	private JFrame frmHospitalSystem;
 	
+	JPanel cadastrarPanel = new JPanel();
+	JPanel listarPanel = new JPanel();
+	JPanel alterarPanel = new JPanel();
+	JPanel deletePanel = new JPanel();
+	
 	private JTextField nomeField;
 	private JTextField valorField;
 	private JTextField cpfField;
@@ -56,6 +60,7 @@ public class Main {
 	JTable tblPacientes = new JTable();
 	JTable tblMedicos = new JTable();
 	JTable tblConsultas = new JTable();
+	
 	
 	JComboBox comboMedico;
 	JComboBox comboPaciente;
@@ -108,48 +113,49 @@ public class Main {
 		btnCadastrarPaciente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				cadastrarPanel.setVisible(true);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(false);
+				deletePanel.setVisible(false);
 				
-				JPanel panel = new JPanel();
-				panel.setVisible(true);
-				
-				LayoutManager overlay = new OverlayLayout(panel);
-				panel.setLayout(overlay);
+				LayoutManager overlay = new OverlayLayout(cadastrarPanel);
+				cadastrarPanel.setLayout(overlay);
 				JButton btnCadastrar = new JButton("Cadastrar");
-				panel.add(btnCadastrar);
+				cadastrarPanel.add(btnCadastrar);
 				
 				
-				panel.setBounds(140, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(panel);
-				panel.setLayout(null);
+				cadastrarPanel.setBounds(140, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(cadastrarPanel);
+				cadastrarPanel.setLayout(null);
 				
 				nomeField = new JTextField();
 				nomeField.setBounds(10, 29, 800, 33);
-				panel.add(nomeField);
+				cadastrarPanel.add(nomeField);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
 				
 				idadeField = new JTextField();
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 73, 800, 33);
-				panel.add(idadeField);
+				cadastrarPanel.add(idadeField);
 				idadeField.setText("Idade");
 				
 				cpfField = new JTextField();
 				cpfField.setColumns(10);
 				cpfField.setBounds(10, 117, 800, 33);
-				panel.add(cpfField);
+				cadastrarPanel.add(cpfField);
 				cpfField.setText("CPF");
 				
 				cidadeField = new JTextField();
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 161, 800, 33);
-				panel.add(cidadeField);
+				cadastrarPanel.add(cidadeField);
 				cidadeField.setText("Cidade");
 				
 				descricaoField = new JTextField();
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 205, 800, 170);
-				panel.add(descricaoField);
+				cadastrarPanel.add(descricaoField);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
 				
 				btnCadastrar.addMouseListener(new MouseAdapter() {
@@ -176,7 +182,7 @@ public class Main {
 					
 						
 						JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso !");
-						panel.setVisible(false);
+						cadastrarPanel.setVisible(false);
 					}
 				});
 				btnCadastrar.setBounds(686, 422, 124, 40);
@@ -192,47 +198,49 @@ public class Main {
 		btnCadastarMedico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel panel = new JPanel();
-				panel.setVisible(true);
+				cadastrarPanel.setVisible(true);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(false);
+				deletePanel.setVisible(false);
 				
-				LayoutManager overlay = new OverlayLayout(panel);
-				panel.setLayout(overlay);
+				LayoutManager overlay = new OverlayLayout(cadastrarPanel);
+				cadastrarPanel.setLayout(overlay);
 				JButton btnCadastrar = new JButton("Cadastrar");
-				panel.add(btnCadastrar);
+				cadastrarPanel.add(btnCadastrar);
 				
 
-				panel.setBounds(140, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(panel);
-				panel.setLayout(null);
+				cadastrarPanel.setBounds(140, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(cadastrarPanel);
+				cadastrarPanel.setLayout(null);
 				
 				nomeField = new JTextField();
 				nomeField.setBounds(10, 29, 800, 33);
-				panel.add(nomeField);
+				cadastrarPanel.add(nomeField);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
 				
 				idadeField = new JTextField();
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 73, 800, 33);
-				panel.add(idadeField);
+				cadastrarPanel.add(idadeField);
 				idadeField.setText("Idade");
 				
 				cpfField = new JTextField();
 				cpfField.setColumns(10);
 				cpfField.setBounds(10, 117, 800, 33);
-				panel.add(cpfField);
+				cadastrarPanel.add(cpfField);
 				cpfField.setText("CPF");
 				
 				cidadeField = new JTextField();
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 161, 800, 33);
-				panel.add(cidadeField);
+				cadastrarPanel.add(cidadeField);
 				cidadeField.setText("Cidade");
 				
 				descricaoField = new JTextField();
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 205, 800, 170);
-				panel.add(descricaoField);
+				cadastrarPanel.add(descricaoField);
 				descricaoField.setText("Especialidade");
 				
 				btnCadastrar.addMouseListener(new MouseAdapter() {
@@ -258,11 +266,11 @@ public class Main {
 					
 						
 						JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso !");
-						panel.setVisible(false);
+						cadastrarPanel.setVisible(false);
 					}
 				});
 				btnCadastrar.setBounds(686, 422, 124, 40);
-				panel.add(btnCadastrar);
+				cadastrarPanel.add(btnCadastrar);
 			}
 		});
 		btnCadastarMedico.setBounds(10, 111, 120, 30);
@@ -273,6 +281,10 @@ public class Main {
 		btnCadastarConsulta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				cadastrarPanel.setVisible(true);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(false);
+				deletePanel.setVisible(false);
 				
 				comboMedico = new JComboBox();
 				comboMedico.setBounds(166, 320, 330, 30);
@@ -296,25 +308,20 @@ public class Main {
 				} catch (SelectException e2) {
 					e2.printStackTrace();
 				} 
-				comboPaciente.setModel(new ComboBoxModelAll(pacientes));
+				comboPaciente.setModel(new ComboBoxModelAll(pacientes));				
 			
+				LayoutManager ol_panel_1 = new OverlayLayout(cadastrarPanel);
+				cadastrarPanel.setLayout(ol_panel_1);
+				JButton btnCadastrar = new JButton("Cadastrar");
+				cadastrarPanel.add(btnCadastrar);
 				
-				JPanel panel_1 = new JPanel(new GridLayout(2, 2));
-				panel_1.setVisible(true);
-				
-			
-				LayoutManager ol_panel_1 = new OverlayLayout(panel_1);
-				panel_1.setLayout(ol_panel_1);
-				JButton btnCadastrar_1 = new JButton("Cadastrar");
-				panel_1.add(btnCadastrar_1);
-				
-				panel_1.setBounds(140, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(panel_1);
-				panel_1.setLayout(null);
+				cadastrarPanel.setBounds(140, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(cadastrarPanel);
+				cadastrarPanel.setLayout(null);
 				
 				valorField = new JTextField();
 				valorField.setBounds(10, 29, 800, 33);
-				panel_1.add(valorField);
+				cadastrarPanel.add(valorField);
 				valorField.setColumns(10);
 				valorField.setText("Valor");
 				
@@ -322,16 +329,16 @@ public class Main {
 				horarioField.setText("00/00/0000 00:00");
 				horarioField.setColumns(10);
 				horarioField.setBounds(10, 73, 800, 33);
-				panel_1.add(horarioField);
+				cadastrarPanel.add(horarioField);
 				
 				diagnosticoField = new JTextField();
 				diagnosticoField.setText("Diagnostico");
 				diagnosticoField.setColumns(10);
 				diagnosticoField.setBounds(10, 117, 800, 108);
-				panel_1.add(diagnosticoField);
+				cadastrarPanel.add(diagnosticoField);
 				
 				
-				btnCadastrar_1.addMouseListener(new MouseAdapter() {
+				btnCadastrar.addMouseListener(new MouseAdapter() {
 					
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -360,12 +367,12 @@ public class Main {
 						sistema.realizarConsulta(consulta);	
 						
 						JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso !");
-						panel_1.setVisible(false);
+						cadastrarPanel.setVisible(false);
 						comboMedico.setVisible(false);
 						comboPaciente.setVisible(false);
 					}
 				});
-				btnCadastrar_1.setBounds(686, 422, 124, 40);
+				btnCadastrar.setBounds(686, 422, 124, 40);
 				
 				
 			}
@@ -378,12 +385,14 @@ public class Main {
 		btnListarPacientes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel panel = new JPanel();
-				panel.setBounds(140, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(panel);
-				panel.setLayout(null);
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(true);
+				alterarPanel.setVisible(false);
+				deletePanel.setVisible(false);
 				
-				
+				listarPanel.setBounds(140, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(listarPanel);
+				listarPanel.setLayout(null);
 
 				tblPacientes.setBorder(new LineBorder(new Color(0, 0, 0)));
 				tblPacientes.setModel(new DefaultTableModel(
@@ -397,7 +406,7 @@ public class Main {
 				
 				JScrollPane scrollPane = new JScrollPane(tblPacientes);
 				scrollPane.setBounds(22, 11, 788, 385);
-				panel.add(scrollPane);
+				listarPanel.add(scrollPane);
 				scrollPane.setViewportView(tblPacientes);
 				ArrayList<Paciente> lista = null;
 				try {
@@ -406,6 +415,7 @@ public class Main {
 					e1.printStackTrace();
 				}
 				atualizaTabelaP(lista);
+						
 			}
 		});
 		btnListarPacientes.setBounds(10, 193, 120, 30);
@@ -416,12 +426,15 @@ public class Main {
 		btnListarMedicos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel panel = new JPanel();
-				panel.setBounds(140, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(panel);
-				panel.setLayout(null);
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(true);
+				alterarPanel.setVisible(false);
+				deletePanel.setVisible(false);
 				
 				
+				listarPanel.setBounds(140, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(listarPanel);
+				listarPanel.setLayout(null);
 
 				tblMedicos.setBorder(new LineBorder(new Color(0, 0, 0)));
 				tblMedicos.setModel(new DefaultTableModel(
@@ -435,7 +448,7 @@ public class Main {
 				
 				JScrollPane scrollPane = new JScrollPane(tblMedicos);
 				scrollPane.setBounds(22, 11, 788, 385);
-				panel.add(scrollPane);
+				listarPanel.add(scrollPane);
 				scrollPane.setViewportView(tblMedicos);
 				ArrayList<Medico> lista = null;
 				try {
@@ -454,11 +467,15 @@ public class Main {
 		btnListarConsultas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel panel = new JPanel();
-				panel.setBounds(140, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(panel);
-				panel.setLayout(null);
-
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(true);
+				alterarPanel.setVisible(false);
+				deletePanel.setVisible(false);
+				
+				
+				listarPanel.setBounds(140, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(listarPanel);
+				listarPanel.setLayout(null);
 
 				tblConsultas.setBorder(new LineBorder(new Color(0, 0, 0)));
 				tblConsultas.setModel(new DefaultTableModel(
@@ -472,7 +489,7 @@ public class Main {
 				
 				JScrollPane scrollPane = new JScrollPane(tblConsultas);
 				scrollPane.setBounds(22, 11, 788, 385);
-				panel.add(scrollPane);
+				listarPanel.add(scrollPane);
 				scrollPane.setViewportView(tblConsultas);
 				ArrayList<Consulta> lista = null;
 				try {
@@ -492,15 +509,17 @@ public class Main {
 		btnAlterarPaciente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(true);
+				deletePanel.setVisible(false);
 				
-				JPanel AlterarPanel = new JPanel();
-				AlterarPanel.setVisible(true);
 				
-				LayoutManager ol_AlterarPanel = new OverlayLayout(AlterarPanel);
-				AlterarPanel.setLayout(ol_AlterarPanel);
+				LayoutManager ol_AlterarPanel = new OverlayLayout(alterarPanel);
+				alterarPanel.setLayout(ol_AlterarPanel);
 				JButton btnAlterar = new JButton("Alterar");
-				AlterarPanel.add(btnAlterar);
-				btnAlterar.setVisible(true);
+				alterarPanel.add(btnAlterar);
+
 				
 				nomeField = new JTextField();
 				frmHospitalSystem.getContentPane().add(nomeField);
@@ -526,13 +545,13 @@ public class Main {
 				descricaoField.setBounds(163, 316, 800, 170);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
 				
-				AlterarPanel.setBounds(154, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(AlterarPanel);
-				AlterarPanel.setLayout(null);
+				alterarPanel.setBounds(154, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(alterarPanel);
+				alterarPanel.setLayout(null);
 				
 				comboPaciente = new JComboBox();
 				comboPaciente.setBounds(10, 10, 330, 30);
-				AlterarPanel.add(comboPaciente);
+				alterarPanel.add(comboPaciente);
 				
 				
 				List<Paciente> pacientes = null;
@@ -564,8 +583,7 @@ public class Main {
 					sistema.alterarPessoa(paciente);
 					
 						JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
-						AlterarPanel.setVisible(false);
-						btnAlterar.setVisible(false);
+						alterarPanel.setVisible(false);
 					}
 				});
 				btnAlterar.setBounds(686, 422, 124, 40);
@@ -579,14 +597,16 @@ public class Main {
 		btnAlterarMedico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel AlterarPanel = new JPanel();
-				AlterarPanel.setVisible(true);
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(true);
+				deletePanel.setVisible(false);
 				
-				LayoutManager ol_AlterarPanel = new OverlayLayout(AlterarPanel);
-				AlterarPanel.setLayout(ol_AlterarPanel);
+				LayoutManager ol_AlterarPanel = new OverlayLayout(alterarPanel);
+				alterarPanel.setLayout(ol_AlterarPanel);
 				JButton btnAlterar = new JButton("Alterar");
-				AlterarPanel.add(btnAlterar);
-				btnAlterar.setVisible(true);
+				alterarPanel.add(btnAlterar);
+
 				
 				nomeField = new JTextField();
 				frmHospitalSystem.getContentPane().add(nomeField);
@@ -612,13 +632,13 @@ public class Main {
 				descricaoField.setBounds(163, 316, 800, 170);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
 				
-				AlterarPanel.setBounds(154, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(AlterarPanel);
-				AlterarPanel.setLayout(null);
+				alterarPanel.setBounds(154, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(alterarPanel);
+				alterarPanel.setLayout(null);
 				
 				comboMedico = new JComboBox();
 				comboMedico.setBounds(10, 10, 330, 30);
-				AlterarPanel.add(comboMedico);
+				alterarPanel.add(comboMedico);
 				
 				
 				List<Medico> medicos = null;
@@ -650,8 +670,7 @@ public class Main {
 					sistema.alterarPessoa(medico);
 					
 						JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
-						AlterarPanel.setVisible(false);
-						btnAlterar.setVisible(false);
+						alterarPanel.setVisible(false);
 					}
 				});
 				btnAlterar.setBounds(686, 422, 124, 40);
@@ -665,15 +684,15 @@ public class Main {
 		btnAlterarConsulta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(true);
+				deletePanel.setVisible(false);
 				
-				JPanel AlterarPanel = new JPanel();
-				AlterarPanel.setVisible(true);
-				
-				LayoutManager ol_AlterarPanel = new OverlayLayout(AlterarPanel);
-				AlterarPanel.setLayout(ol_AlterarPanel);
+				LayoutManager ol_AlterarPanel = new OverlayLayout(alterarPanel);
+				alterarPanel.setLayout(ol_AlterarPanel);
 				JButton btnAlterar = new JButton("Alterar");
-				AlterarPanel.add(btnAlterar);
-				btnAlterar.setVisible(true);
+				alterarPanel.add(btnAlterar);
 				
 				diagnosticoField = new JTextField();
 				frmHospitalSystem.getContentPane().add(diagnosticoField);
@@ -693,13 +712,13 @@ public class Main {
 				valorField.setColumns(10);
 				valorField.setText("Valor");
 				
-				AlterarPanel.setBounds(154, 70, 820, 481);
-				frmHospitalSystem.getContentPane().add(AlterarPanel);
-				AlterarPanel.setLayout(null);
+				alterarPanel.setBounds(154, 70, 820, 481);
+				frmHospitalSystem.getContentPane().add(alterarPanel);
+				alterarPanel.setLayout(null);
 				
 				comboConsulta = new JComboBox();
 				comboConsulta.setBounds(10, 10, 330, 30);
-				AlterarPanel.add(comboConsulta);
+				alterarPanel.add(comboConsulta);
 				
 				
 				List<Consulta> consultas = null;
@@ -736,7 +755,7 @@ public class Main {
 					sistema.alterarConsulta(consulta);	
 					
 					JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
-					AlterarPanel.setVisible(false);
+					alterarPanel.setVisible(false);
 					}
 				});
 				btnAlterar.setBounds(686, 422, 124, 40);
@@ -751,14 +770,16 @@ public class Main {
 		btnExcluirPaciente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel deletePanel = new JPanel();
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(false);
 				deletePanel.setVisible(true);
 				
 				LayoutManager overlay = new OverlayLayout(deletePanel);
 				deletePanel.setLayout(overlay);
 				JButton btnRemover = new JButton("Remover");
 				deletePanel.add(btnRemover);
-				btnRemover.setVisible(true);
+
 				
 				deletePanel.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(deletePanel);
@@ -790,7 +811,6 @@ public class Main {
 					
 						JOptionPane.showMessageDialog(null, "Remoção efetuada com sucesso !");
 						deletePanel.setVisible(false);
-						btnRemover.setVisible(false);
 					}
 				});
 				btnRemover.setBounds(686, 422, 124, 40);
@@ -804,15 +824,15 @@ public class Main {
 		btnExcluirMedico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				JPanel deletePanel = new JPanel();
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(false);
 				deletePanel.setVisible(true);
 				
 				LayoutManager overlay = new OverlayLayout(deletePanel);
 				deletePanel.setLayout(overlay);
 				JButton btnRemover = new JButton("Remover");
 				deletePanel.add(btnRemover);
-				btnRemover.setVisible(true);
 				
 				deletePanel.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(deletePanel);
@@ -844,7 +864,6 @@ public class Main {
 					
 						JOptionPane.showMessageDialog(null, "Remoção efetuada com sucesso !");
 						deletePanel.setVisible(false);
-						btnRemover.setVisible(false);
 					}
 				});
 				btnRemover.setBounds(686, 422, 124, 40);
@@ -859,15 +878,15 @@ public class Main {
 		btnExcluirConsulta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				JPanel deletePanel = new JPanel();
+				cadastrarPanel.setVisible(false);
+				listarPanel.setVisible(false);
+				alterarPanel.setVisible(false);
 				deletePanel.setVisible(true);
 				
 				LayoutManager overlay = new OverlayLayout(deletePanel);
 				deletePanel.setLayout(overlay);
 				JButton btnRemover = new JButton("Remover");
 				deletePanel.add(btnRemover);
-				btnRemover.setVisible(true);
 				
 				deletePanel.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(deletePanel);
@@ -899,7 +918,6 @@ public class Main {
 					
 						JOptionPane.showMessageDialog(null, "Remoção efetuada com sucesso !");
 						deletePanel.setVisible(false);
-						btnRemover.setVisible(false);
 					}
 				});
 				btnRemover.setBounds(686, 422, 124, 40);
