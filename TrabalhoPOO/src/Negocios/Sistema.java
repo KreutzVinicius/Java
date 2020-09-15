@@ -106,7 +106,7 @@ public void removerConsulta (int id) {
 }
 
 public Pessoa buscarPessoa (String cpf) {
-	Pessoa pessoa = new Paciente();
+	Pessoa pessoa = new Pessoa();
 	pessoaDAO = PessoaDAO.getInstance();
 	
 	try {
