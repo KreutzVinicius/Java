@@ -574,7 +574,7 @@ public class Main {
 				descricaoField = new JTextField();
 				alterarPanelP.add(descricaoField);
 				descricaoField.setColumns(10);
-				descricaoField.setBounds(10, 156, 800, 170);
+				descricaoField.setBounds(10, 168, 800, 163);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
 				
 				alterarPanelP.setBounds(154, 70, 820, 481);
@@ -597,21 +597,20 @@ public class Main {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Paciente paciente = new Paciente();
-					Pessoa pessoa = new Pessoa();
 					String aux;
 					paciente = (Paciente) comboPaciente.getModel().getSelectedItem();
-					comboPaciente.getModel().getSelectedItem().equals(pessoa);
+
 					
-					pessoa.setNome(nomeField.getText());
+					paciente.setNome(nomeField.getText());
 					 aux = idadeField.getText();
 					 int idade = Integer.parseInt(aux);
-					 pessoa.setIdade(idade);
-					 pessoa.setCidade(cidadeField.getText());
+					 paciente.setIdade(idade);
+					 paciente.setCidade(cidadeField.getText());
 					 
 					 paciente.setDescricao(descricaoField.getText());
-					
+					 
 					sistema.alterarPaciente(paciente);
-					sistema.alterarPessoa(pessoa);
+					sistema.alterarPessoa(paciente);
 					
 						JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
 						alterarPanelP.setVisible(false);
@@ -690,21 +689,19 @@ public class Main {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Medico medico = new Medico();
-					Pessoa pessoa = new Pessoa();
 					String aux;
 					medico = (Medico) comboMedico.getModel().getSelectedItem();
-					pessoa = (Medico) comboMedico.getModel().getSelectedItem();
 					
-					pessoa.setNome(nomeField.getText());
+					medico.setNome(nomeField.getText());
 					 aux = idadeField.getText();
 					 int idade = Integer.parseInt(aux);
-					 pessoa.setIdade(idade);
-					 pessoa.setCidade(cidadeField.getText());
+					 medico.setIdade(idade);
+					 medico.setCidade(cidadeField.getText());
 					 
 					 medico.setEspecialidade(descricaoField.getText());
 					
 					sistema.alterarMedico(medico);
-					sistema.alterarPessoa(pessoa);
+					sistema.alterarPessoa(medico);
 					
 						JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
 						alterarPanelM.setVisible(false);
