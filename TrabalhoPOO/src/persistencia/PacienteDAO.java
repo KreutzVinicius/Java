@@ -1,4 +1,4 @@
-package Persistencia;
+package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Dados.Paciente;
+import dados.Paciente;
 import exceptions.DeleteException;
 import exceptions.InsertException;
 import exceptions.SelectException;

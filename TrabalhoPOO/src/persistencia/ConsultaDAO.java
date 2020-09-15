@@ -1,4 +1,4 @@
-package Persistencia;
+package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Dados.Consulta;
+import dados.Consulta;
 import exceptions.DeleteException;
 import exceptions.InsertException;
 import exceptions.SelectException;
@@ -28,7 +28,7 @@ public class ConsultaDAO {
 		try {
 			sqlinsert = conn.prepareStatement("insert into consulta (id, valor, horario, diagnostico, id_medico, id_paciente) values (default,?,?,?,?,?) ");
 			sqldelete = conn.prepareStatement("delete from consulta where id = ?");
-			sqlupdate = conn.prepareStatement("update consulta set valor=?, data=?, horario=?, diagnostico=? where id = ?");
+			sqlupdate = conn.prepareStatement("update consulta set valor=?, horario=?, diagnostico=? where id = ?");
 			sqlall = conn.prepareStatement("select id from consulta");
 			sqlselectcon = conn.prepareStatement("select * from consulta where id = ?");
 		} catch (SQLException e) {
@@ -114,6 +114,8 @@ public class ConsultaDAO {
 			sqlupdate.setString(3, consulta.getDiagnostico());
 			sqlupdate.setInt (4, consulta.getId());
 			sqlupdate.executeUpdate();
+			
+			System.out.println(consulta.getId());
 		} catch (Exception e) {
 			 throw new UpdateException("erro de update na tabela consulta");
 		}

@@ -1,4 +1,4 @@
-package View;
+package views;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -26,15 +26,16 @@ import javax.swing.OverlayLayout;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import Dados.Consulta;
-import Dados.Medico;
-import Dados.Paciente;
-import Dados.Pessoa;
-import Negocios.Sistema;
-import Persistencia.ConsultaDAO;
-import Persistencia.MedicoDAO;
-import Persistencia.PacienteDAO;
+import dados.Consulta;
+import dados.Medico;
+import dados.Paciente;
+import dados.Pessoa;
 import exceptions.SelectException;
+import negocios.Sistema;
+import persistencia.ConsultaDAO;
+import persistencia.MedicoDAO;
+import persistencia.PacienteDAO;
+
 import javax.swing.JComboBox;
 
 public class Main {
@@ -166,7 +167,7 @@ public class Main {
 						 
 						 pessoa.setNome(nomeField.getText());
 						 aux = idadeField.getText();
-						 int idade = Integer.parseInt(aux);
+						 int idade = Integer.valueOf(aux);
 						 pessoa.setIdade(idade);
 						 pessoa.setCpf(cpfField.getText());
 						 pessoa.setCidade(cidadeField.getText());
@@ -174,7 +175,7 @@ public class Main {
 						 paciente.setDescricao(descricaoField.getText());
 						 
 						sistema.cadastrarPessoa(pessoa);
-						paciente.setIdPes(sistema.buscarPessoa(pessoa.getCpf()).getId());
+						paciente.setIdPes(sistema.buscarPessoa(pessoa.getCpf()).getIdPes());
 						sistema.cadastrarPaciente(paciente);					
 						
 						JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso !");
@@ -253,7 +254,7 @@ public class Main {
 						 						 
 						 pessoa.setNome(nomeField.getText());
 						 aux = idadeField.getText();
-						 int idade = Integer.parseInt(aux);
+						 int idade = Integer.valueOf(aux);
 						 pessoa.setIdade(idade);
 						 pessoa.setCpf(cpfField.getText());
 						 pessoa.setCidade(cidadeField.getText());
@@ -261,7 +262,7 @@ public class Main {
 						 medico.setEspecialidade(descricaoField.getText());
 						 
 						sistema.cadastrarPessoa(pessoa);
-						medico.setIdPes(sistema.buscarPessoa(pessoa.getCpf()).getId());
+						medico.setIdPes(sistema.buscarPessoa(pessoa.getCpf()).getIdPes());
 						sistema.cadastrarMedico(medico);
 											
 						JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso !");
@@ -353,7 +354,7 @@ public class Main {
 						 String aux;
 
 						 aux = valorField.getText();
-						 int valor = Integer.parseInt(aux);
+						 int valor = Integer.valueOf(aux);
 						 consulta.setValor(valor);
 						 aux = horarioField.getText();
 						 
@@ -603,7 +604,7 @@ public class Main {
 					
 					paciente.setNome(nomeField.getText());
 					 aux = idadeField.getText();
-					 int idade = Integer.parseInt(aux);
+					 int idade = Integer.valueOf(aux);
 					 paciente.setIdade(idade);
 					 paciente.setCidade(cidadeField.getText());
 					 
@@ -666,7 +667,7 @@ public class Main {
 				descricaoField = new JTextField();
 				alterarPanelM.add(descricaoField);
 				descricaoField.setColumns(10);
-				descricaoField.setBounds(10, 156, 800, 170);
+				descricaoField.setBounds(10, 168, 800, 170);
 				descricaoField.setText("Especialidade");
 				
 				alterarPanelM.setBounds(154, 70, 820, 481);
@@ -694,12 +695,17 @@ public class Main {
 					
 					medico.setNome(nomeField.getText());
 					 aux = idadeField.getText();
-					 int idade = Integer.parseInt(aux);
+					 int idade = Integer.valueOf(aux);
 					 medico.setIdade(idade);
 					 medico.setCidade(cidadeField.getText());
 					 
 					 medico.setEspecialidade(descricaoField.getText());
 					
+					 System.out.println(medico.getCpf());
+					 System.out.println(medico.getIdPes());
+					 System.out.println(medico.getNome());
+					 System.out.println(medico.getEspecialidade());
+					 
 					sistema.alterarMedico(medico);
 					sistema.alterarPessoa(medico);
 					
@@ -775,8 +781,10 @@ public class Main {
 					public void mouseClicked(MouseEvent e) {
 					Consulta consulta = new Consulta();
 					String aux;
+					consulta = (Consulta) comboConsulta.getModel().getSelectedItem();
+					
 					 aux = valorField.getText();
-					 int valor = Integer.parseInt(aux);
+					 int valor = Integer.valueOf(aux);
 					 consulta.setValor(valor);
 					 aux = horarioField.getText();
 					 
@@ -790,7 +798,7 @@ public class Main {
 							return;
 						}
 						consulta.setDiagnostico(diagnosticoField.getText());
-					 
+	
 					sistema.alterarConsulta(consulta);	
 					
 					JOptionPane.showMessageDialog(null, "Alteração efetuada com sucesso !");
@@ -987,12 +995,12 @@ public class Main {
 				DefaultTableModel dadosPac = (DefaultTableModel) tblPacientes.getModel();
 				
 				int pos = -1;
-				for(Pessoa contribuinte : lista) {
+				for(Paciente paciente : lista) {
 					pos++;
 					dadosPac.addRow(linha);
-					dadosPac.setValueAt(contribuinte.getId(), pos, 0);
-					dadosPac.setValueAt(contribuinte.getNome(), pos, 1);
-					dadosPac.setValueAt(contribuinte.getCpf(), pos, 2);
+					dadosPac.setValueAt(paciente.getId(), pos, 0);
+					dadosPac.setValueAt(paciente.getNome(), pos, 1);
+					dadosPac.setValueAt(paciente.getCpf(), pos, 2);
 
 				}
 			} catch (Exception e) {
@@ -1007,12 +1015,12 @@ public class Main {
 				DefaultTableModel dadosMed = (DefaultTableModel) tblMedicos.getModel();
 				
 				int pos = -1;
-				for(Pessoa pessoa : lista) {
+				for(Medico medico : lista) {
 					pos++;
 					dadosMed.addRow(linha);
-					dadosMed.setValueAt(pessoa.getId(), pos, 0);
-					dadosMed.setValueAt(pessoa.getNome(), pos, 1);
-					dadosMed.setValueAt(pessoa.getCpf(), pos, 2);
+					dadosMed.setValueAt(medico.getId(), pos, 0);
+					dadosMed.setValueAt(medico.getNome(), pos, 1);
+					dadosMed.setValueAt(medico.getCpf(), pos, 2);
 
 				}
 			} catch (Exception e) {

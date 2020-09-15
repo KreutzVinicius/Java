@@ -1,7 +1,7 @@
-package Dados;
+package dados;
 
 public class Pessoa {
-	private int id;
+	private int idPes;
 	private String nome;
 	private int idade;
 	private String cpf;
@@ -14,11 +14,12 @@ public class Pessoa {
 		return "Nome: " + nome;
 	}
 	
-	public int getId() {
-		return id;
+
+	public int getIdPes() {
+		return idPes;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdPes(int idPes) {
+		this.idPes = idPes;
 	}
 	public String getNome() {
 		return nome;

@@ -1,4 +1,4 @@
-package Persistencia;
+package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Dados.Pessoa;
+import dados.Pessoa;
 import exceptions.DeleteException;
 import exceptions.InsertException;
 import exceptions.SelectException;
@@ -77,7 +77,7 @@ public class PessoaDAO {
 			rs = sqlselectpes.executeQuery();
 			if(rs.next()) {
 				pes = new Pessoa();
-				pes.setId(rs.getInt("id"));
+				pes.setIdPes(rs.getInt("id"));
 				pes.setNome(rs.getString("nome"));
 				pes.setIdade(rs.getInt("idade"));
 				pes.setCpf(rs.getString("cpf"));
@@ -121,10 +121,13 @@ public class PessoaDAO {
 
 	public void update (Pessoa pessoa) throws UpdateException {
 		try {
+			
+			System.out.println(pessoa.getIdPes());
+			
 			sqlupdate.setString(1,pessoa.getNome());
 			sqlupdate.setInt(2,pessoa.getIdade());
 			sqlupdate.setString(3,pessoa.getCidade());
-			sqlupdate.setInt(4,pessoa.getId());
+			sqlupdate.setInt(4,pessoa.getIdPes());
 			sqlupdate.executeUpdate();
 		} catch (Exception e) {
 			 throw new UpdateException("erro de update na tabela pessoa");
