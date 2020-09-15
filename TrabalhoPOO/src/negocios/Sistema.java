@@ -227,8 +227,6 @@ medicoDAO =MedicoDAO.getInstance();
 }
 public void alterarConsulta (Consulta consulta) {
 consultaDAO = ConsultaDAO.getInstance();
-
-System.out.println(consulta.getId());
 	
 	try {
 				consultaDAO.update(consulta);

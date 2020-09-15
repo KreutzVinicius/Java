@@ -114,8 +114,7 @@ public class ConsultaDAO {
 			sqlupdate.setString(3, consulta.getDiagnostico());
 			sqlupdate.setInt (4, consulta.getId());
 			sqlupdate.executeUpdate();
-			
-			System.out.println(consulta.getId());
+
 		} catch (Exception e) {
 			 throw new UpdateException("erro de update na tabela consulta");
 		}

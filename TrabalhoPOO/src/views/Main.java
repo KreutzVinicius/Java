@@ -700,11 +700,6 @@ public class Main {
 					 medico.setCidade(cidadeField.getText());
 					 
 					 medico.setEspecialidade(descricaoField.getText());
-					
-					 System.out.println(medico.getCpf());
-					 System.out.println(medico.getIdPes());
-					 System.out.println(medico.getNome());
-					 System.out.println(medico.getEspecialidade());
 					 
 					sistema.alterarMedico(medico);
 					sistema.alterarPessoa(medico);
