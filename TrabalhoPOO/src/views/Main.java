@@ -37,6 +37,8 @@ import persistencia.MedicoDAO;
 import persistencia.PacienteDAO;
 
 import javax.swing.JComboBox;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class Main {
 
@@ -93,6 +95,9 @@ public class Main {
 
 	private void initialize() {
 		
+		
+		
+		
 		frmHospitalSystem = new JFrame();
 		frmHospitalSystem.setTitle("Hospital System");
 		frmHospitalSystem.setBounds(100, 100 , 1000, 600);
@@ -132,30 +137,61 @@ public class Main {
 				cadastrarPanelP.add(nomeField);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						nomeField.setText("");
+					}
+				});
+				
 				
 				idadeField = new JTextField();
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 73, 800, 33);
 				cadastrarPanelP.add(idadeField);
 				idadeField.setText("Idade");
+				idadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						idadeField.setText("");
+					}
+				});
 				
 				cpfField = new JTextField();
 				cpfField.setColumns(10);
 				cpfField.setBounds(10, 117, 800, 33);
 				cadastrarPanelP.add(cpfField);
 				cpfField.setText("CPF");
+				cpfField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						cpfField.setText("");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 161, 800, 33);
 				cadastrarPanelP.add(cidadeField);
 				cidadeField.setText("Cidade");
+				cidadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						cidadeField.setText("");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 205, 800, 170);
 				cadastrarPanelP.add(descricaoField);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
+				descricaoField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						descricaoField.setText("");
+					}
+				});
 				
 				btnCadastrar.addMouseListener(new MouseAdapter() {
 					
@@ -220,30 +256,60 @@ public class Main {
 				cadastrarPanelM.add(nomeField);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						nomeField.setText("");
+					}
+				});
 				
 				idadeField = new JTextField();
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 73, 800, 33);
 				cadastrarPanelM.add(idadeField);
 				idadeField.setText("Idade");
+				idadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						idadeField.setText("");
+					}
+				});
 				
 				cpfField = new JTextField();
 				cpfField.setColumns(10);
 				cpfField.setBounds(10, 117, 800, 33);
 				cadastrarPanelM.add(cpfField);
 				cpfField.setText("CPF");
+				cpfField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						cpfField.setText("");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 161, 800, 33);
 				cadastrarPanelM.add(cidadeField);
 				cidadeField.setText("Cidade");
+				cidadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						cidadeField.setText("");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 205, 800, 170);
 				cadastrarPanelM.add(descricaoField);
 				descricaoField.setText("Especialidade");
+				descricaoField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						descricaoField.setText("");
+					}
+				});
 				
 				btnCadastrar.addMouseListener(new MouseAdapter() {
 					@Override
@@ -334,18 +400,36 @@ public class Main {
 				cadastrarPanelC.add(valorField);
 				valorField.setColumns(10);
 				valorField.setText("Valor");
+				valorField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						valorField.setText("");
+					}
+				});
 				
 				horarioField = new JTextField();
 				horarioField.setText("00/00/0000 00:00");
 				horarioField.setColumns(10);
 				horarioField.setBounds(10, 73, 800, 33);
 				cadastrarPanelC.add(horarioField);
+				horarioField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						horarioField.setText("");
+					}
+				});
 				
 				diagnosticoField = new JTextField();
 				diagnosticoField.setText("Diagnostico");
 				diagnosticoField.setColumns(10);
 				diagnosticoField.setBounds(10, 117, 800, 108);
 				cadastrarPanelC.add(diagnosticoField);
+				diagnosticoField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						diagnosticoField.setText("");
+					}
+				});
 			
 				btnCadastrar.addMouseListener(new MouseAdapter() {			
 					@Override
@@ -559,24 +643,48 @@ public class Main {
 				nomeField.setBounds(10, 49, 800, 33);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						nomeField.setText("");
+					}
+				});
 				
 				idadeField = new JTextField();
 				alterarPanelP.add(idadeField);
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 88, 800, 33);
 				idadeField.setText("Idade");
+				idadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						idadeField.setText("");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				alterarPanelP.add(cidadeField);
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 127, 800, 33);
 				cidadeField.setText("Cidade");
+				cidadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						cidadeField.setText("");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				alterarPanelP.add(descricaoField);
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 168, 800, 163);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
+				descricaoField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						descricaoField.setText("");
+					}
+				});
 				
 				alterarPanelP.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(alterarPanelP);
@@ -651,24 +759,48 @@ public class Main {
 				nomeField.setBounds(10, 49, 800, 33);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						nomeField.setText("");
+					}
+				});
 				
 				idadeField = new JTextField();
 				alterarPanelM.add(idadeField);
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 88, 800, 33);
 				idadeField.setText("Idade");
+				idadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						idadeField.setText("");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				alterarPanelM.add(cidadeField);
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 127, 800, 33);
 				cidadeField.setText("Cidade");
+				cidadeField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						cidadeField.setText("");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				alterarPanelM.add(descricaoField);
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 168, 800, 170);
 				descricaoField.setText("Especialidade");
+				descricaoField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						descricaoField.setText("");
+					}
+				});
 				
 				alterarPanelM.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(alterarPanelM);
@@ -742,18 +874,36 @@ public class Main {
 				diagnosticoField.setText("Diagnostico");
 				diagnosticoField.setColumns(10);
 				diagnosticoField.setBounds(10, 49, 800, 33);
+				diagnosticoField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						diagnosticoField.setText("");
+					}
+				});
 				
 				horarioField = new JTextField();
 				alterarPanelC.add(horarioField);
 				horarioField.setText("00/00/0000 00:00");
 				horarioField.setColumns(10);
 				horarioField.setBounds(10, 88, 800, 33);
+				horarioField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						horarioField.setText("");
+					}
+				});
 				
 				valorField = new JTextField();
 				alterarPanelC.add(valorField);
 				valorField.setBounds(10, 127, 800, 33);
 				valorField.setColumns(10);
 				valorField.setText("Valor");
+				valorField.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						valorField.setText("");
+					}
+				});
 				
 				alterarPanelC.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(alterarPanelC);
@@ -980,7 +1130,7 @@ public class Main {
 			}
 		});
 		btnExcluirConsulta.setBounds(10, 521, 120, 30);
-		frmHospitalSystem.getContentPane().add(btnExcluirConsulta);	
+		frmHospitalSystem.getContentPane().add(btnExcluirConsulta);
 	}
 		
 		public void atualizaTabelaP(ArrayList<Paciente> lista) {
