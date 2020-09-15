@@ -37,6 +37,8 @@ import persistencia.MedicoDAO;
 import persistencia.PacienteDAO;
 
 import javax.swing.JComboBox;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class Main {
 
@@ -73,6 +75,7 @@ public class Main {
 	JComboBox comboMedico;
 	JComboBox comboPaciente;
 	JComboBox comboConsulta;
+	private JTextField txtAa;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -132,30 +135,85 @@ public class Main {
 				cadastrarPanelP.add(nomeField);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						nomeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (nomeField.getText().length()==0)
+							nomeField.setText("Nome");
+					}
+				});
 				
 				idadeField = new JTextField();
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 73, 800, 33);
 				cadastrarPanelP.add(idadeField);
 				idadeField.setText("Idade");
+				idadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						idadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (idadeField.getText().length()==0)
+							idadeField.setText("Idade");
+					}
+				});
 				
 				cpfField = new JTextField();
 				cpfField.setColumns(10);
 				cpfField.setBounds(10, 117, 800, 33);
 				cadastrarPanelP.add(cpfField);
 				cpfField.setText("CPF");
+				cpfField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						cpfField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (cpfField.getText().length()==0)
+						cpfField.setText("CPF");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 161, 800, 33);
 				cadastrarPanelP.add(cidadeField);
 				cidadeField.setText("Cidade");
+				cidadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						cidadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (cidadeField.getText().length()==0)
+							cidadeField.setText("Cidade");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 205, 800, 170);
 				cadastrarPanelP.add(descricaoField);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
+				descricaoField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						descricaoField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (descricaoField.getText().length()==0)
+							descricaoField.setText("Descrição");
+					}
+				});
 				
 				btnCadastrar.addMouseListener(new MouseAdapter() {
 					
@@ -220,30 +278,85 @@ public class Main {
 				cadastrarPanelM.add(nomeField);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						nomeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (nomeField.getText().length()==0)
+							nomeField.setText("Nome");
+					}
+				});
 				
 				idadeField = new JTextField();
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 73, 800, 33);
 				cadastrarPanelM.add(idadeField);
 				idadeField.setText("Idade");
+				idadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						idadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (idadeField.getText().length()==0)
+							idadeField.setText("Idade");
+					}
+				});
 				
 				cpfField = new JTextField();
 				cpfField.setColumns(10);
 				cpfField.setBounds(10, 117, 800, 33);
 				cadastrarPanelM.add(cpfField);
 				cpfField.setText("CPF");
+				cpfField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						cpfField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (cpfField.getText().length()==0)
+							cpfField.setText("CPF");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 161, 800, 33);
 				cadastrarPanelM.add(cidadeField);
 				cidadeField.setText("Cidade");
+				cidadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						cidadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (cidadeField.getText().length()==0)
+							cidadeField.setText("Cidade");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 205, 800, 170);
 				cadastrarPanelM.add(descricaoField);
 				descricaoField.setText("Especialidade");
+				descricaoField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						descricaoField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (descricaoField.getText().length()==0)
+							descricaoField.setText("Especialidade");
+					}
+				});
 				
 				btnCadastrar.addMouseListener(new MouseAdapter() {
 					@Override
@@ -334,18 +447,51 @@ public class Main {
 				cadastrarPanelC.add(valorField);
 				valorField.setColumns(10);
 				valorField.setText("Valor");
+				valorField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						valorField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (valorField.getText().length()==0)
+							valorField.setText("Valor");
+					}
+				});
 				
 				horarioField = new JTextField();
 				horarioField.setText("00/00/0000 00:00");
 				horarioField.setColumns(10);
 				horarioField.setBounds(10, 73, 800, 33);
 				cadastrarPanelC.add(horarioField);
+				horarioField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						horarioField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (horarioField.getText().length()==0)
+							horarioField.setText("00/00/0000 00:00");
+					}
+				});
 				
 				diagnosticoField = new JTextField();
 				diagnosticoField.setText("Diagnostico");
 				diagnosticoField.setColumns(10);
 				diagnosticoField.setBounds(10, 117, 800, 108);
 				cadastrarPanelC.add(diagnosticoField);
+				diagnosticoField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						diagnosticoField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (diagnosticoField.getText().length()==0)
+							diagnosticoField.setText("Diagnostico");
+					}
+				});
 			
 				btnCadastrar.addMouseListener(new MouseAdapter() {			
 					@Override
@@ -559,24 +705,68 @@ public class Main {
 				nomeField.setBounds(10, 49, 800, 33);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						nomeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (nomeField.getText().length()==0)
+							nomeField.setText("Nome");
+					}
+				});
 				
 				idadeField = new JTextField();
 				alterarPanelP.add(idadeField);
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 88, 800, 33);
 				idadeField.setText("Idade");
+				idadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						idadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (idadeField.getText().length()==0)
+							idadeField.setText("Idade");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				alterarPanelP.add(cidadeField);
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 127, 800, 33);
 				cidadeField.setText("Cidade");
+				cidadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						cidadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (cidadeField.getText().length()==0)
+							cidadeField.setText("Cidade");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				alterarPanelP.add(descricaoField);
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 168, 800, 163);
 				descricaoField.setText("Descri\u00E7\u00E3o\r\n\r\n\r\n\r\n\r\n");
+				descricaoField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						descricaoField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (descricaoField.getText().length()==0)
+							descricaoField.setText("Descrição");
+					}
+				});
 				
 				alterarPanelP.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(alterarPanelP);
@@ -651,24 +841,68 @@ public class Main {
 				nomeField.setBounds(10, 49, 800, 33);
 				nomeField.setColumns(10);
 				nomeField.setText("Nome");
+				nomeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						nomeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (nomeField.getText().length()==0)
+							nomeField.setText("Nome");
+					}
+				});
 				
 				idadeField = new JTextField();
 				alterarPanelM.add(idadeField);
 				idadeField.setColumns(10);
 				idadeField.setBounds(10, 88, 800, 33);
 				idadeField.setText("Idade");
+				idadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						idadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (idadeField.getText().length()==0)
+							idadeField.setText("Idade");
+					}
+				});
 				
 				cidadeField = new JTextField();
 				alterarPanelM.add(cidadeField);
 				cidadeField.setColumns(10);
 				cidadeField.setBounds(10, 127, 800, 33);
 				cidadeField.setText("Cidade");
+				cidadeField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						cidadeField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (cidadeField.getText().length()==0)
+							cidadeField.setText("Cidade");
+					}
+				});
 				
 				descricaoField = new JTextField();
 				alterarPanelM.add(descricaoField);
 				descricaoField.setColumns(10);
 				descricaoField.setBounds(10, 168, 800, 170);
 				descricaoField.setText("Especialidade");
+				descricaoField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						descricaoField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (descricaoField.getText().length()==0)
+							descricaoField.setText("Descrição");
+					}
+				});
 				
 				alterarPanelM.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(alterarPanelM);
@@ -742,18 +976,51 @@ public class Main {
 				diagnosticoField.setText("Diagnostico");
 				diagnosticoField.setColumns(10);
 				diagnosticoField.setBounds(10, 49, 800, 33);
+				diagnosticoField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						diagnosticoField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (diagnosticoField.getText().length()==0)
+							diagnosticoField.setText("Diagnostico");
+					}
+				});
 				
 				horarioField = new JTextField();
 				alterarPanelC.add(horarioField);
 				horarioField.setText("00/00/0000 00:00");
 				horarioField.setColumns(10);
 				horarioField.setBounds(10, 88, 800, 33);
+				horarioField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						horarioField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (horarioField.getText().length()==0)
+							horarioField.setText("00/00/0000 00:00");
+					}
+				});
 				
 				valorField = new JTextField();
 				alterarPanelC.add(valorField);
 				valorField.setBounds(10, 127, 800, 33);
 				valorField.setColumns(10);
 				valorField.setText("Valor");
+				valorField.addFocusListener(new FocusAdapter() {
+					@Override
+					public void focusGained(FocusEvent e) {
+						valorField.setText("");
+					}
+					@Override
+					public void focusLost(FocusEvent e) {
+						if (valorField.getText().length()==0)
+							valorField.setText("Valor");
+					}
+				});
 				
 				alterarPanelC.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(alterarPanelC);
@@ -981,6 +1248,10 @@ public class Main {
 		});
 		btnExcluirConsulta.setBounds(10, 521, 120, 30);
 		frmHospitalSystem.getContentPane().add(btnExcluirConsulta);	
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(140, 70, 820, 481);
+		frmHospitalSystem.getContentPane().add(panel);
 	}
 		
 		public void atualizaTabelaP(ArrayList<Paciente> lista) {
