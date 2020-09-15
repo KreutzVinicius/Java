@@ -75,7 +75,6 @@ public class Main {
 	JComboBox comboMedico;
 	JComboBox comboPaciente;
 	JComboBox comboConsulta;
-	private JTextField txtAa;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -1247,11 +1246,9 @@ public class Main {
 			}
 		});
 		btnExcluirConsulta.setBounds(10, 521, 120, 30);
-		frmHospitalSystem.getContentPane().add(btnExcluirConsulta);	
+		frmHospitalSystem.getContentPane().add(btnExcluirConsulta);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(140, 70, 820, 481);
-		frmHospitalSystem.getContentPane().add(panel);
+
 	}
 		
 		public void atualizaTabelaP(ArrayList<Paciente> lista) {
