@@ -48,6 +48,10 @@ public class Main {
 	JPanel alterarPanel = new JPanel();
 	JPanel deletePanel = new JPanel();
 	
+	JTable tblPacientes = new JTable();
+	JTable tblMedicos = new JTable();
+	JTable tblConsultas = new JTable();
+	
 	private JTextField nomeField;
 	private JTextField valorField;
 	private JTextField cpfField;
@@ -57,23 +61,10 @@ public class Main {
 	private JTextField horarioField;
 	private JTextField diagnosticoField;
 	
-	JTable tblPacientes = new JTable();
-	JTable tblMedicos = new JTable();
-	JTable tblConsultas = new JTable();
-	
-	
 	JComboBox comboMedico;
 	JComboBox comboPaciente;
 	JComboBox comboConsulta;
-	
 
-	
-	
-	
-
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -87,16 +78,10 @@ public class Main {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public Main() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		
 		frmHospitalSystem = new JFrame();
@@ -105,8 +90,6 @@ public class Main {
 		frmHospitalSystem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHospitalSystem.setLocationRelativeTo(null);
 		frmHospitalSystem.getContentPane().setLayout(null);
-
-		
 		
 		JButton btnCadastrarPaciente = new JButton("Cadastar Paciente");
 		btnCadastrarPaciente.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -122,8 +105,7 @@ public class Main {
 				cadastrarPanel.setLayout(overlay);
 				JButton btnCadastrar = new JButton("Cadastrar");
 				cadastrarPanel.add(btnCadastrar);
-				
-				
+							
 				cadastrarPanel.setBounds(140, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(cadastrarPanel);
 				cadastrarPanel.setLayout(null);
@@ -164,8 +146,7 @@ public class Main {
 					public void mouseClicked(MouseEvent e) {
 						Paciente paciente = new Paciente();
 						 Pessoa pessoa = new Pessoa();
-						 String aux;
-						 
+						 String aux;	 
 						 
 						 pessoa.setNome(nomeField.getText());
 						 aux = idadeField.getText();
@@ -178,16 +159,13 @@ public class Main {
 						 
 						sistema.cadastrarPessoa(pessoa);
 						paciente.setIdPes(sistema.buscarPessoa(pessoa.getCpf()).getId());
-						sistema.cadastrarPaciente(paciente);
-					
+						sistema.cadastrarPaciente(paciente);					
 						
 						JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso !");
 						cadastrarPanel.setVisible(false);
 					}
 				});
-				btnCadastrar.setBounds(686, 422, 124, 40);
-				
-				
+				btnCadastrar.setBounds(686, 422, 124, 40);				
 			}
 		});
 		btnCadastrarPaciente.setBounds(10, 70, 120, 30);
@@ -206,8 +184,7 @@ public class Main {
 				LayoutManager overlay = new OverlayLayout(cadastrarPanel);
 				cadastrarPanel.setLayout(overlay);
 				JButton btnCadastrar = new JButton("Cadastrar");
-				cadastrarPanel.add(btnCadastrar);
-				
+				cadastrarPanel.add(btnCadastrar);				
 
 				cadastrarPanel.setBounds(140, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(cadastrarPanel);
@@ -249,8 +226,7 @@ public class Main {
 					   	 Medico medico = new Medico();
 						 Pessoa pessoa = new Pessoa();
 						 String aux;
-						 
-						 
+						 						 
 						 pessoa.setNome(nomeField.getText());
 						 aux = idadeField.getText();
 						 int idade = Integer.parseInt(aux);
@@ -263,8 +239,7 @@ public class Main {
 						sistema.cadastrarPessoa(pessoa);
 						medico.setIdPes(sistema.buscarPessoa(pessoa.getCpf()).getId());
 						sistema.cadastrarMedico(medico);
-					
-						
+											
 						JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso !");
 						cadastrarPanel.setVisible(false);
 					}
@@ -336,10 +311,8 @@ public class Main {
 				diagnosticoField.setColumns(10);
 				diagnosticoField.setBounds(10, 117, 800, 108);
 				cadastrarPanel.add(diagnosticoField);
-				
-				
-				btnCadastrar.addMouseListener(new MouseAdapter() {
-					
+			
+				btnCadastrar.addMouseListener(new MouseAdapter() {			
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						Consulta consulta = new Consulta();
@@ -372,9 +345,7 @@ public class Main {
 						comboPaciente.setVisible(false);
 					}
 				});
-				btnCadastrar.setBounds(686, 422, 124, 40);
-				
-				
+				btnCadastrar.setBounds(686, 422, 124, 40);		
 			}
 		});
 		btnCadastarConsulta.setBounds(10, 152, 120, 30);
@@ -414,8 +385,7 @@ public class Main {
 				} catch (SelectException e1) {
 					e1.printStackTrace();
 				}
-				atualizaTabelaP(lista);
-						
+				atualizaTabelaP(lista);						
 			}
 		});
 		btnListarPacientes.setBounds(10, 193, 120, 30);
@@ -430,8 +400,7 @@ public class Main {
 				listarPanel.setVisible(true);
 				alterarPanel.setVisible(false);
 				deletePanel.setVisible(false);
-				
-				
+								
 				listarPanel.setBounds(140, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(listarPanel);
 				listarPanel.setLayout(null);
@@ -471,8 +440,7 @@ public class Main {
 				listarPanel.setVisible(true);
 				alterarPanel.setVisible(false);
 				deletePanel.setVisible(false);
-				
-				
+							
 				listarPanel.setBounds(140, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(listarPanel);
 				listarPanel.setLayout(null);
@@ -512,14 +480,12 @@ public class Main {
 				cadastrarPanel.setVisible(false);
 				listarPanel.setVisible(false);
 				alterarPanel.setVisible(true);
-				deletePanel.setVisible(false);
-				
+				deletePanel.setVisible(false);			
 				
 				LayoutManager ol_AlterarPanel = new OverlayLayout(alterarPanel);
 				alterarPanel.setLayout(ol_AlterarPanel);
 				JButton btnAlterar = new JButton("Alterar");
 				alterarPanel.add(btnAlterar);
-
 				
 				nomeField = new JTextField();
 				frmHospitalSystem.getContentPane().add(nomeField);
@@ -552,8 +518,7 @@ public class Main {
 				comboPaciente = new JComboBox();
 				comboPaciente.setBounds(10, 10, 330, 30);
 				alterarPanel.add(comboPaciente);
-				
-				
+								
 				List<Paciente> pacientes = null;
 				try {
 					pacientes = PacienteDAO.getInstance().selectAllPac();
@@ -561,10 +526,8 @@ public class Main {
 					e2.printStackTrace();
 				} 
 				comboPaciente.setModel(new ComboBoxModelAll(pacientes));
-				
-				
-				btnAlterar.addMouseListener(new MouseAdapter() {
-					
+								
+				btnAlterar.addMouseListener(new MouseAdapter() {				
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Paciente paciente = new Paciente();
@@ -606,7 +569,6 @@ public class Main {
 				alterarPanel.setLayout(ol_AlterarPanel);
 				JButton btnAlterar = new JButton("Alterar");
 				alterarPanel.add(btnAlterar);
-
 				
 				nomeField = new JTextField();
 				frmHospitalSystem.getContentPane().add(nomeField);
@@ -639,8 +601,7 @@ public class Main {
 				comboMedico = new JComboBox();
 				comboMedico.setBounds(10, 10, 330, 30);
 				alterarPanel.add(comboMedico);
-				
-				
+								
 				List<Medico> medicos = null;
 				try {
 					medicos = MedicoDAO.getInstance().selectAllMed();
@@ -649,9 +610,7 @@ public class Main {
 				} 
 				comboMedico.setModel(new ComboBoxModelAll(medicos));
 				
-				
-				btnAlterar.addMouseListener(new MouseAdapter() {
-					
+					btnAlterar.addMouseListener(new MouseAdapter() {					
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Medico medico = new Medico();
@@ -719,8 +678,7 @@ public class Main {
 				comboConsulta = new JComboBox();
 				comboConsulta.setBounds(10, 10, 330, 30);
 				alterarPanel.add(comboConsulta);
-				
-				
+								
 				List<Consulta> consultas = null;
 				try {
 					consultas = ConsultaDAO.getInstance().selectAllCon();
@@ -728,10 +686,8 @@ public class Main {
 					e2.printStackTrace();
 				} 
 				comboConsulta.setModel(new ComboBoxModelAll(consultas));
-				
-				
-				btnAlterar.addMouseListener(new MouseAdapter() {
-					
+							
+				btnAlterar.addMouseListener(new MouseAdapter() {					
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Consulta consulta = new Consulta();
@@ -758,8 +714,7 @@ public class Main {
 					alterarPanel.setVisible(false);
 					}
 				});
-				btnAlterar.setBounds(686, 422, 124, 40);
-				
+				btnAlterar.setBounds(686, 422, 124, 40);				
 			}
 		});
 		btnAlterarConsulta.setBounds(10, 398, 120, 30);
@@ -779,7 +734,6 @@ public class Main {
 				deletePanel.setLayout(overlay);
 				JButton btnRemover = new JButton("Remover");
 				deletePanel.add(btnRemover);
-
 				
 				deletePanel.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(deletePanel);
@@ -787,8 +741,7 @@ public class Main {
 				
 				comboPaciente = new JComboBox();
 				comboPaciente.setBounds(10, 10, 330, 30);
-				deletePanel.add(comboPaciente);
-				
+				deletePanel.add(comboPaciente);				
 				
 				List<Paciente> pacientes = null;
 				try {
@@ -798,14 +751,12 @@ public class Main {
 				} 
 				comboPaciente.setModel(new ComboBoxModelAll(pacientes));
 				
-				btnRemover.addMouseListener(new MouseAdapter() {
-					
+				btnRemover.addMouseListener(new MouseAdapter() {					
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Paciente paciente = new Paciente();
 					paciente = (Paciente) comboPaciente.getModel().getSelectedItem();
-						
-					
+											
 					sistema.removerPaciente(paciente.getId());
 					sistema.removerPessoa(paciente.getIdPes());
 					
@@ -841,8 +792,7 @@ public class Main {
 				comboMedico = new JComboBox();
 				comboMedico.setBounds(10, 10, 330, 30);
 				deletePanel.add(comboMedico);
-				
-				
+								
 				List<Medico> medicos = null;
 				try {
 					medicos = MedicoDAO.getInstance().selectAllMed();
@@ -851,13 +801,11 @@ public class Main {
 				} 
 				comboMedico.setModel(new ComboBoxModelAll(medicos));
 				
-				btnRemover.addMouseListener(new MouseAdapter() {
-					
+				btnRemover.addMouseListener(new MouseAdapter() {					
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Medico medico = new Medico();
-					medico = (Medico) comboMedico.getModel().getSelectedItem();
-						
+					medico = (Medico) comboMedico.getModel().getSelectedItem();					
 					
 					sistema.removerMedico(medico.getId());
 					sistema.removerPessoa(medico.getIdPes());
@@ -894,8 +842,7 @@ public class Main {
 				
 				comboConsulta = new JComboBox();
 				comboConsulta.setBounds(10, 10, 800, 30);
-				deletePanel.add(comboConsulta);
-				
+				deletePanel.add(comboConsulta);			
 				
 				List<Consulta> consulta = null;
 				try {
@@ -910,12 +857,10 @@ public class Main {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 					Consulta consulta = new Consulta();
-					consulta = (Consulta) comboConsulta.getModel().getSelectedItem();
-						
+					consulta = (Consulta) comboConsulta.getModel().getSelectedItem();						
 					
 					sistema.removerConsulta(consulta.getId());
-			
-					
+								
 						JOptionPane.showMessageDialog(null, "Remoção efetuada com sucesso !");
 						deletePanel.setVisible(false);
 					}
@@ -924,9 +869,7 @@ public class Main {
 			}
 		});
 		btnExcluirConsulta.setBounds(10, 521, 120, 30);
-		frmHospitalSystem.getContentPane().add(btnExcluirConsulta);
-	
-
+		frmHospitalSystem.getContentPane().add(btnExcluirConsulta);	
 	}
 		
 		public void atualizaTabelaP(ArrayList<Paciente> lista) {
@@ -942,7 +885,6 @@ public class Main {
 					dadosPac.setValueAt(contribuinte.getId(), pos, 0);
 					dadosPac.setValueAt(contribuinte.getNome(), pos, 1);
 					dadosPac.setValueAt(contribuinte.getCpf(), pos, 2);
-
 
 				}
 			} catch (Exception e) {
@@ -963,7 +905,6 @@ public class Main {
 					dadosMed.setValueAt(pessoa.getId(), pos, 0);
 					dadosMed.setValueAt(pessoa.getNome(), pos, 1);
 					dadosMed.setValueAt(pessoa.getCpf(), pos, 2);
-
 
 				}
 			} catch (Exception e) {
@@ -987,7 +928,6 @@ public class Main {
 					dadosCon.setValueAt(consulta.getMedico().getId(), pos, 3);
 					dadosCon.setValueAt(consulta.getPaciente().getId(), pos, 4);
 
-
 				}
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Ocorreu um erros: " + e.getMessage(), "Erro:", JOptionPane.ERROR_MESSAGE);
@@ -1002,7 +942,6 @@ public class Main {
 		}
 		
 		public class ComboBoxModelAll extends javax.swing.DefaultComboBoxModel<Object> {
-
 			public ComboBoxModelAll(java.util.List<? extends Object> c) {
 			    Object[] elementData = c.toArray();
 			    int size;
@@ -1015,5 +954,5 @@ public class Main {
 			        }
 			    }
 			}
-			}
+		}
 	}
