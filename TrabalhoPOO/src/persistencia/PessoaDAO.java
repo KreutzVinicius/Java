@@ -121,8 +121,7 @@ public class PessoaDAO {
 
 	public void update (Pessoa pessoa) throws UpdateException {
 		try {
-			
-			System.out.println(pessoa.getIdPes());
+
 			
 			sqlupdate.setString(1,pessoa.getNome());
 			sqlupdate.setInt(2,pessoa.getIdade());
