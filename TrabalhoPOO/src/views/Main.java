@@ -158,7 +158,10 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (idadeField.getText().length()==0)
+						String aux;
+						 aux = idadeField.getText();
+						 int idade = Integer.valueOf(aux);
+						if (idade == 0)
 							idadeField.setText("Idade");
 					}
 				});
@@ -175,7 +178,10 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (cpfField.getText().length()==0)
+						String aux;
+						 aux = cpfField.getText();
+						 int cpf = Integer.valueOf(aux);
+						if (cpf == 0)
 						cpfField.setText("CPF");
 					}
 				});
@@ -301,7 +307,10 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (idadeField.getText().length()==0)
+						String aux;
+						 aux = idadeField.getText();
+						 int idade = Integer.valueOf(aux);
+						if (idade == 0)
 							idadeField.setText("Idade");
 					}
 				});
@@ -309,7 +318,7 @@ public class Main {
 				cpfField = new JTextField();
 				cpfField.setColumns(10);
 				cpfField.setBounds(10, 117, 800, 33);
-				cadastrarPanelM.add(cpfField);
+				cadastrarPanelP.add(cpfField);
 				cpfField.setText("CPF");
 				cpfField.addFocusListener(new FocusAdapter() {
 					@Override
@@ -318,8 +327,11 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (cpfField.getText().length()==0)
-							cpfField.setText("CPF");
+						String aux;
+						 aux = cpfField.getText();
+						 int cpf = Integer.valueOf(aux);
+						if (cpf == 0)
+						cpfField.setText("CPF");
 					}
 				});
 				
@@ -453,8 +465,11 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (valorField.getText().length()==0)
-							valorField.setText("Valor");
+						String aux;
+						 aux = valorField.getText();
+						 int valor = Integer.valueOf(aux);
+						if (valor == 0)
+						valorField.setText("Valor");
 					}
 				});
 				
@@ -728,7 +743,10 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (idadeField.getText().length()==0)
+						String aux;
+						 aux = idadeField.getText();
+						 int idade = Integer.valueOf(aux);
+						if (idade == 0)
 							idadeField.setText("Idade");
 					}
 				});
@@ -864,7 +882,10 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (idadeField.getText().length()==0)
+						String aux;
+						 aux = idadeField.getText();
+						 int idade = Integer.valueOf(aux);
+						if (idade == 0)
 							idadeField.setText("Idade");
 					}
 				});
@@ -1016,11 +1037,13 @@ public class Main {
 					}
 					@Override
 					public void focusLost(FocusEvent e) {
-						if (valorField.getText().length()==0)
-							valorField.setText("Valor");
+						String aux;
+						 aux = valorField.getText();
+						 int valor = Integer.valueOf(aux);
+						if (valor == 0)
+						valorField.setText("Valor");
 					}
 				});
-				
 				alterarPanelC.setBounds(154, 70, 820, 481);
 				frmHospitalSystem.getContentPane().add(alterarPanelC);
 				alterarPanelC.setLayout(null);
